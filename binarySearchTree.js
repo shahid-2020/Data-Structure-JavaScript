@@ -38,19 +38,19 @@ class Tree {
             throw new Error('Empty Binary Search Tree');
         }
 
-        if(root.data === ele){
+        if (root.data === ele) {
 
-            if(!root.leftChild && !root.rightChild){
+            if (!root.leftChild && !root.rightChild) {
                 return null;
-            }else if(root.leftChild && !root.rightChild){
+            } else if (root.leftChild && !root.rightChild) {
                 return root.leftChild;
-            }else if(!root.leftChild && root.rightChild){
+            } else if (!root.leftChild && root.rightChild) {
                 return root.rightChild;
-            }else{
+            } else {
                 let temp = root.rightChild;
 
-                while(temp.leftChild){
-                    temp=temp.leftChild;
+                while (temp.leftChild) {
+                    temp = temp.leftChild;
                 }
 
                 root.data = temp.data;
@@ -58,21 +58,21 @@ class Tree {
                 return root;
             }
 
-        }else if(root.data > ele){
+        } else if (root.data > ele) {
             root.leftChild = this._removeElement(root.leftChild, ele);
-            return root;    
-        }else{
+            return root;
+        } else {
             root.rightChild = this._removeElement(root.rightChild, ele);
             return root;
         }
-     }
+    }
 
     remove(ele) {
         this.root = this._removeElement(this.root, ele);
     }
 
-    inOrder(){
-        function traverse(node, arr){
+    inOrder() {
+        function traverse(node, arr) {
             (node.leftChild && traverse(node.leftChild, arr));
             arr.push(node.data);
             (node.rightChild && traverse(node.rightChild, arr));
@@ -83,8 +83,8 @@ class Tree {
         return arr;
     }
 
-    preOrder(){
-        function traverse(node, arr){
+    preOrder() {
+        function traverse(node, arr) {
             arr.push(node.data);
             (node.leftChild && traverse(node.leftChild, arr));
             (node.rightChild && traverse(node.rightChild, arr));
@@ -94,9 +94,9 @@ class Tree {
         return arr;
     }
 
-    postOrder(){
-        
-        function traverse(node, arr){
+    postOrder() {
+
+        function traverse(node, arr) {
             (node.leftChild && traverse(node.leftChild, arr));
             (node.rightChild && traverse(node.rightChild, arr));
             arr.push(node.data);
@@ -106,23 +106,23 @@ class Tree {
         return arr;
     }
 
-    levelOrder(){
+    levelOrder() {
         const arr = new Array();
         const arrayQueue = new Array();
 
-        if(this.root){
-        arrayQueue.push(this.root);
+        if (this.root) {
+            arrayQueue.push(this.root);
 
-        while(arrayQueue.length > 0){
-            let node=arrayQueue.shift();
-            arr.push(node.data);
-            if(node.leftChild){
-                arrayQueue.push(node.leftChild);
+            while (arrayQueue.length > 0) {
+                let node = arrayQueue.shift();
+                arr.push(node.data);
+                if (node.leftChild) {
+                    arrayQueue.push(node.leftChild);
+                }
+                if (node.rightChild) {
+                    arrayQueue.push(node.rightChild);
+                }
             }
-            if(node.rightChild){
-                arrayQueue.push(node.rightChild);
-            }
-        }
         }
         return arr;
     }
