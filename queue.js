@@ -1,17 +1,18 @@
 'use strict';
 
 class Node {
-    next = null;
     constructor (data) {
         this.data = data;
+        this.next = null;
     }
 }
 
 class Queue {
-    head = null;
-    tail = null;
-    length = 0;
-
+    constructor () {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
     size() {
         return this.length;
     }
@@ -36,7 +37,7 @@ class Queue {
 
     dequeue() {
 
-        if (this.length === 0) {
+        if (this.isEmpty()) {
             throw new Error('Empty Queue');
         }
         this.length--;

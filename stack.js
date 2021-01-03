@@ -1,16 +1,18 @@
 'use strict';
 
 class Node {
-    next = null;
     constructor (data) {
         this.data = data;
+        this.next = null;
     }
 }
 
 class Stack {
-    head = null;
-    tail = null;
-    length = 0;
+    constructor () {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
 
     size() {
         return this.length;
@@ -36,7 +38,7 @@ class Stack {
 
     pop() {
 
-        if (this.length === 0) {
+        if (this.isEmpty()) {
             throw new Error('Empty Stack');
         }
 
@@ -81,27 +83,27 @@ Stack Testing
 
 */
 
-const queue = new Stack();
+const stack = new Stack();
 try {
-    console.log(queue.isEmpty());
-    queue.push(1);
-    queue.push(2);
-    queue.push(3);
-    queue.push(4);
-    queue.push(5);
-    console.log(queue.isEmpty());
-    console.log(queue.toArray());
-    queue.pop();
-    console.log(queue.toArray());
-    queue.pop();
-    console.log(queue.toArray());
-    queue.pop();
-    console.log(queue.toArray());
-    queue.pop();
-    console.log(queue.toArray());
-    queue.pop();
-    console.log(queue.toArray());
-    console.log(queue.size());
+    console.log(stack.isEmpty());
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+    console.log(stack.isEmpty());
+    console.log(stack.toArray());
+    stack.pop();
+    console.log(stack.toArray());
+    stack.pop();
+    console.log(stack.toArray());
+    stack.pop();
+    console.log(stack.toArray());
+    stack.pop();
+    console.log(stack.toArray());
+    stack.pop();
+    console.log(stack.toArray());
+    console.log(stack.size());
 } catch (err) {
     console.log(err);
 }
